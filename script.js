@@ -10,11 +10,12 @@ let backImageCounter = 3;
 let currentPic = null;
 let backPic = null;
 
-let clock = 1;
+
 
 
 
 window.addEventListener("load", ()=>{
+  let clock = 1;
   phoneScreenImage = document.getElementById("phone-screen-image");
   phoneScreenDiv = document.getElementById("phone-screen");
 
@@ -22,13 +23,13 @@ window.addEventListener("load", ()=>{
   phoneBackScreenDiv = document.getElementById("phone-back-screen");
 
   setInterval(()=>{
-
+  
     if(clock%2 !== 0){
       fadeOut(phoneScreenDiv);
       showUp(phoneBackScreenDiv);
 
       updateCurrentPic()
-      console.log(backImageCounter)
+      
     }
     else
     {
@@ -36,7 +37,7 @@ window.addEventListener("load", ()=>{
       showUp(phoneScreenDiv);
   
       upadateBackPic()
-      console.log(upImageCounter)
+      
     }
     
     clock++;
@@ -77,20 +78,29 @@ function upadateBackPic(){
 }
 
 function showUp(element){
-  
-  setTimeout(()=> element.style.opacity = "0.2", 200 );
-  setTimeout(()=> element.style.opacity = "0.4", 400 );
-  setTimeout(()=> element.style.opacity = "0.6", 600 );
-  setTimeout(()=> element.style.opacity = "0.8", 700 );
-  setTimeout(()=> element.style.opacity = "1", 1000 );
-
+  let opacity = 0;
+  let interval = setInterval(()=>{
+    opacity+=10;
+    element.style.opacity = opacity/100;
+    killInterval(interval, opacity, 100);
+    
+    
+  }, 100);
   }
 
-function fadeOut(element){
-  setTimeout(()=> element.style.opacity = "0.8", 200 );
-  setTimeout(()=> element.style.opacity = "0.6", 400 );
-  setTimeout(()=> element.style.opacity = "0.4", 600 );
-  setTimeout(()=> element.style.opacity = "0.2", 700 );
-  setTimeout(()=> element.style.opacity = "0", 1000 );
-}
+  function killInterval(interval, opacity, ending){
+    if(opacity === ending){
+      clearInterval(interval);
+    }
+  }
+
+  function fadeOut(element){
+    let opacity = 100;
+    let interval = setInterval(()=>{
+      opacity-= 10;
+      element.style.opacity = opacity/100;
+      killInterval(interval, opacity, 0);   
+      
+    }, 100);
+  }
 

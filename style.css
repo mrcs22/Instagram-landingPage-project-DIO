@@ -19,24 +19,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
-  width: 60%;
+  width: 800px;
   height: 100vh;
 }
 
 .instagram-phone {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 402px;
 }
 
 #phone-screen {
   width: 13.5rem;
   height: 24.2rem;
   background-color: grey;
-  position: fixed;
-  margin-top: 0.5rem;
-  margin-left: 4.9rem;
+  position: absolute;
+  top: 79px;
+  left: 140px;
 }
 #phone-screen img {
   width: 100%;
@@ -51,9 +52,9 @@ body {
   width: 13.5rem;
   height: 24.2rem;
   background-color: grey;
-  position: fixed;
-  margin-top: 0.5rem;
-  margin-left: 4.9rem;
+  position: absolute;
+  top: 79px;
+  left: 140px;
   opacity: 0;
 }
 #phone-back-screen img {
@@ -155,16 +156,13 @@ body {
 
 @media (max-width: 1024px) {
   .instagram-wrapper {
-    width: 90%;
+    width: 100%;
   }
 }
 
-@media (max-width: 650px) {
-  body {
-    background-color: #ffffff;
-  }
+@media (max-width: 800px) {
   .instagram-wrapper {
-    width: 90%;
+    width: 350px;
   }
   .instagram-phone {
     display: none;
@@ -172,7 +170,16 @@ body {
   .instagram-account {
     width: 100%;
   }
+}
+
+@media (max-width: 600px) {
+  body {
+    background-color: #ffffff;
+  }
   .group {
     border: 1px solid transparent;
+  }
+  .instagram-wrapper {
+    min-width: 320px;
   }
 }
