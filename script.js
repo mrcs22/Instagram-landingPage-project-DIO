@@ -10,10 +10,6 @@ let backImageCounter = 3;
 let currentPic = null;
 let backPic = null;
 
-
-
-
-
 window.addEventListener("load", ()=>{
   let clock = 1;
   phoneScreenImage = document.getElementById("phone-screen-image");
@@ -23,29 +19,27 @@ window.addEventListener("load", ()=>{
   phoneBackScreenDiv = document.getElementById("phone-back-screen");
 
   setInterval(()=>{
-  
-    if(clock%2 !== 0){
-      fadeOut(phoneScreenDiv);
-      showUp(phoneBackScreenDiv);
-
-      updateCurrentPic()
-      
-    }
-    else
-    {
-      fadeOut(phoneBackScreenDiv);
-      showUp(phoneScreenDiv);
-  
-      upadateBackPic()
-      
-    }
-    
+    renderPhoneScreenAnimation(clock);        
     clock++;
-
   }, 5000);
 
 });
 
+function renderPhoneScreenAnimation(clock){
+  if(clock%2 !== 0){
+    fadeOut(phoneScreenDiv);
+    showUp(phoneBackScreenDiv);
+
+    updateCurrentPic()
+  }
+  else
+  {
+    fadeOut(phoneBackScreenDiv);
+    showUp(phoneScreenDiv);
+
+    upadateBackPic()
+  }
+}
 
 function updateCurrentPic(){
   if(upImageCounter < 5){
@@ -83,24 +77,23 @@ function showUp(element){
     opacity+=10;
     element.style.opacity = opacity/100;
     killInterval(interval, opacity, 100);
-    
-    
   }, 100);
   }
 
-  function killInterval(interval, opacity, ending){
+function killInterval(interval, opacity, ending){
     if(opacity === ending){
       clearInterval(interval);
     }
-  }
+}
 
-  function fadeOut(element){
-    let opacity = 100;
-    let interval = setInterval(()=>{
+function fadeOut(element){
+  let opacity = 100;
+  let interval = setInterval(()=>{
       opacity-= 10;
       element.style.opacity = opacity/100;
+     
       killInterval(interval, opacity, 0);   
       
     }, 100);
-  }
+}
 
