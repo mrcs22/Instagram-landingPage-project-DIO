@@ -7,3 +7,6 @@ Primeiro projeto guiado referente ao bootcamp Javascipt Game Developer oferecido
  1. Definição do cursor como "pointer" nos trechos "Alternar contas" e "Inscreva-se".
  2. Criação de duas divs sobrepostas entre si para apresentação de imagens.
  3. Utilização de Javascript para realizar alteração de imagens e transição entre as divs.
+
+
+ <img src="./images/desktop.gif"/> 
